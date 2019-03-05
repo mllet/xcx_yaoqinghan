@@ -1,0 +1,35 @@
+<style lang="less">
+
+</style>
+<template>
+    <view class="container">
+        <counter1 @index-emit.user="counterEmit"/>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import Counter from 'counter' // alias example
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: 'aaa'
+        }
+        components = {
+            counter1: Counter,
+        }
+        data = {
+            mynum: 20,
+        }
+        computed = {
+            now() {
+                return +new Date()
+            }
+        }
+        methods = {}
+        events = {}
+
+        onLoad() {
+
+        }
+    }
+</script>
