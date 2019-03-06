@@ -65,6 +65,7 @@
 
 <script>
     import wepy from 'wepy'
+
     let musicInstance;
     export default class Index extends wepy.page {
         config = {
@@ -72,7 +73,7 @@
         };
         data = {
             music_url: 'https://m10.music.126.net/20190306164904/de9639634c84f269ffb9454b5ac94a07/ymusic/035f/0659/0653/457d7520ab133721525719042895f037.mp3',
-            isPlayingMusic:true
+            isPlayingMusic: true
         };
         methods = {
             play() {
@@ -102,15 +103,23 @@
             }
         };
 
-        onLoad() {
+        playMusic() {
             musicInstance = wx.getBackgroundAudioManager();
             musicInstance.title = '背景音乐';
             // 设置了 src 之后会自动播放
             musicInstance.src = this.data.music_url;
             //用于循环播放音乐
-            musicInstance.onEnded(function () {
-                musicInstance.src =this.data.music_url;
-            });
+            musicInstance.play();
+            musicInstance.onPlay(() => {
+                console.log("音乐播放开始");
+            })
+            musicInstance.onEnded(() => {
+                musicInstance.src = this.data.music_url;
+            })
+        }
+
+        onLoad() {
+            this.playMusic();
         }
     }
 </script>
