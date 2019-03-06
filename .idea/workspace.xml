@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4589074-6630-449a-820a-dfc23ecfe5cb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/app.wpy" afterPath="$PROJECT_DIR$/src/app.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/bless.wpy" afterPath="$PROJECT_DIR$/src/pages/bless.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/chat.wpy" afterPath="$PROJECT_DIR$/src/pages/chat.wpy" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" afterPath="$PROJECT_DIR$/src/pages/index.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/map.wpy" afterPath="$PROJECT_DIR$/src/pages/map.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/photos.wpy" afterPath="$PROJECT_DIR$/src/pages/photos.wpy" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -75,8 +69,8 @@
       <file leaf-file-name="index.wpy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1866">
-              <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            <state relative-caret-position="1474">
+              <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -231,7 +225,7 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fc_xcx" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/WWW/xcx/xcx_yaoqinghan/src/pages/map.wpy" />
   </component>
@@ -273,12 +267,12 @@
       <workItem from="1551765904352" duration="9238000" />
       <workItem from="1551776754360" duration="6564000" />
       <workItem from="1551783512816" duration="475000" />
-      <workItem from="1551854646548" duration="699000" />
+      <workItem from="1551854646548" duration="5287000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22617000" />
+    <option name="totallyTimeSpent" value="27205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="460" y="65" width="1390" height="965" extended-state="0" />
@@ -687,8 +681,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1866">
-          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        <state relative-caret-position="1474">
+          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
           <folding />
         </state>
       </provider>

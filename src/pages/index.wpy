@@ -59,33 +59,28 @@
                 <image src="/images/icons/music_play.png" class="music_play {{pauseImg}}"/>
             </view>
         </view>
+
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
-
+    let musicInstance;
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '婚礼邀请函'
         };
         data = {
-            music_url: 'http://58.49.111.24/amobile.music.tc.qq.com/C400001dUzHj0Txu13.m4a?guid=9773386763&vkey=5C7F0C8E10B71B7631AA4CFE8BF0E0094D9A9DD6035145CD9F9738B776A25B90B625201FA967F5090ECAE20AB65DC6E535B3F92B8C0BA596&uin=0&fromtag=66',
-            isPlayingMusic: true,
-            music_icon:"",
-            pauseImg:""
+            music_url: 'https://m10.music.126.net/20190306164904/de9639634c84f269ffb9454b5ac94a07/ymusic/035f/0659/0653/457d7520ab133721525719042895f037.mp3',
+            isPlayingMusic:true
         };
         methods = {
             play() {
                 if (this.data.isPlayingMusic) {
-                    wx.pauseBackgroundAudio();/* 该接口停止维护，需升级 */
+                    musicInstance.pause();
                     this.data.isPlayingMusic = false;
                 } else {
-                    wx.playBackgroundAudio({
-                        dataUrl: this.data.music_url,
-                        title: '',
-                        coverImgUrl: ''
-                    });
+                    musicInstance.play();
                     this.data.isPlayingMusic = true;
                 }
             }
@@ -94,24 +89,27 @@
             music_icon() {
                 if (this.data.isPlayingMusic) {
                     return "music_icon";
-                }else {
+                } else {
                     return "";
                 }
             },
-            pauseImg(){
+            pauseImg() {
                 if (this.data.isPlayingMusic) {
                     return "pauseImg";
-                }else{
+                } else {
                     return "playImg";
                 }
             }
         };
 
         onLoad() {
-            wx.playBackgroundAudio({
-                dataUrl: this.data.music_url,
-                title: '',
-                coverImgUrl: ''
+            musicInstance = wx.getBackgroundAudioManager();
+            musicInstance.title = '背景音乐';
+            // 设置了 src 之后会自动播放
+            musicInstance.src = this.data.music_url;
+            //用于循环播放音乐
+            musicInstance.onEnded(function () {
+                musicInstance.src =this.data.music_url;
             });
         }
     }
