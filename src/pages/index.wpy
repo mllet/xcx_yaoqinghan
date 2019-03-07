@@ -4,7 +4,7 @@
         top: 20rpx;
         right: 0;
         z-index: 10001;
-        width: 100rpx;
+        width: 80rpx;
     }
     .musicImg {
         width: 60rpx;
@@ -54,6 +54,48 @@
         height: 100vh;
         width: 100%;
     }
+    .container .inv {
+        position: fixed;
+        height: 60rpx;
+        top: 20rpx;
+        right: 60rpx;
+        z-index: 99
+    }
+    .datetime {
+        position: fixed;
+        bottom: 50rpx;
+        width: 620rpx;
+        padding: 15rpx;
+        left: 50rpx;
+        background-color: rgba(255, 255, 255, .8)
+    }
+    .box {
+        padding: 30rpx 0;
+        position: relative;
+        border: 4rpx solid rgba(0, 0, 0, .8);
+    }
+    .we {
+        position: absolute;
+        bottom: 0;
+        left: 40rpx;
+        width: 520rpx;
+        height: 14rpx;
+    }
+    .date {
+        text-align: center;
+        font-size: 30rpx;
+        line-height: 50rpx;
+        margin-top: 20rpx;
+    }
+    .name {
+        width: 400rpx;
+        margin: 0 auto;
+        min-height: 0;
+        overflow: hidden;
+        font-size: 50rpx;
+        line-height: 50rpx;
+        text-align: center;
+    }
 </style>
 <template>
     <view class="container">
@@ -67,7 +109,20 @@
             <swiper_demo :swiperData.sync="data.swiperData"></swiper_demo>
         </view>
         <view>
-
+            <image src='/images/icons/inv.png' class='inv'></image>
+            <view class='datetime'>
+                <view class='box'>
+                    <view class="name">Mr.钟 & Miss.候</view>
+                    <view class="date">
+                        <view>谨定于 {{mainInfo.date}}</view>
+                        <view>农历 {{mainInfo.lunar}} 举办婚礼</view>
+                        <view>席设：{{mainInfo.hotel}}</view>
+                        <view>地址：{{mainInfo.address}}</view>
+                        <view>恭请您的光临</view>
+                    </view>
+                    <image class="we" src='/images/icons/we.png'></image>
+                </view>
+            </view>
         </view>
     </view>
 </template>
@@ -75,6 +130,7 @@
 <script>
     import wepy from 'wepy'
     import swiperDemo from './../components/swiper';
+
     let musicInstance;
     export default class Index extends wepy.page {
         config = {
@@ -86,20 +142,26 @@
         data = {
             music_url: 'http://isure.stream.qqmusic.qq.com/C400002u0fTY2HoJJp.m4a?guid=9773386763&vkey=052F5395E49C520A2C6669E732D1A11E9CC4E48C2665C45323BD94AB11A57690615ED1FD3AECDC3BCF045B3BE252B8D4C56CB3D0CA0813DA&uin=0&fromtag=66',
             isPlayingMusic: true,
-            swiperData:{
+            swiperData: {
                 url: [
                     'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9889dbacc59e72503f677ada8a63bd52f35bb84fdbd5e5f9ab7410c8f7e4963c47b8782c6745637c71077cc76427c9eb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1554.JPG&size=750',
                     'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/3394d68f180f1ebf20295a4b16fee28a996a30f98e61a0618ca48e8d2a62b12a02237a5c40cceed131591f61bbb0cfad?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1553.JPG&size=750',
                     'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fb735421063b1173f1883a238e007ca0fc7c9b38cdcace0ccd2a7296a482f2fc90010a29773504f887e8e18458f3c1cb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1552.JPG&size=750'
                 ],
                 indicatorDots: true,//是否显示面板指示点
-                vertical: false,//滑动方向是否为纵向
+                vertical: true,//滑动方向是否为纵向
                 autoplay: true,//	是否自动切换 true需设置衔接滑动
                 circular: true,//衔接滑动
                 interval: 4000,//自动切换时间间隔https:
                 duration: 500,//滑动动画时长
-                previousMargin: 0,//前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值
+                previousMargin: 0,//前边距，可用于露出前一项的一小部分，接受 px 和rpx 值
                 nextMargin: 0
+            },
+            mainInfo: {
+                date: "2019年2月2日 （星期六）",
+                lunar: "腊月二十八 举办婚礼",
+                hotel: "重庆永川天长大酒店",
+                address:"重庆永川渝西广场号"
             }
         };
         methods = {
