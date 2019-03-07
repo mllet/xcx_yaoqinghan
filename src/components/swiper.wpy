@@ -1,22 +1,47 @@
 <template>
+    <swiper
+            indicator-dots="{{swiperData.indicatorDots}}" autoplay="{{swiperData.autoplay}}" circular="{{swiperData.circular}}" vertical="{{swiperData.vertical}}"
+            interval="{{swiperData.interval}}" duration="{{swiperData.duration}}" previous-margin="{{swiperData.previousMargin}}px" next-margin="{{swiperData.nextMargin}}px">
+        <block wx:for="{{swiperData.url}}" wx:key="*this">
+            <swiper-item>
+                <view class="swiper-item">
+                    <image style="background-color: #eeeeee; width:100%;height:100%" mode="scaleToFill"
+                           src="{{item}}">
 
+                    </image>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
 </template>
 
 <script>
     import wepy from 'wepy'
-    export default class ListAnother extends wepy.component {
+
+    export default class swiperDemo extends wepy.component {
         props = {//接收父组件转递参数
             swiperData: {
                 type: Object,
                 default: {}
             }
-        }
-        onLoad(){
-            console.log(this.data.swiperData);
+        };
+        data = {
+            swiperData: {}
+        };
+
+        onLoad() {
+            this.swiperData = this.$parent.swiperData;
+            this.$apply();//达到绑定数据的效果
         }
     }
 </script>
 
-<style scoped>
-
+<style lang="less">
+    swiper{
+        height: 100vh;
+    }
+    .swiper-item {
+        display: block;
+        height: 100vh;
+    }
 </style>
