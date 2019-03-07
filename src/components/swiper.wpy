@@ -1,0 +1,22 @@
+<template>
+
+</template>
+
+<script>
+    import wepy from 'wepy'
+    export default class ListAnother extends wepy.component {
+        props = {//接收父组件转递参数
+            swiperData: {
+                type: Object,
+                default: {}
+            }
+        }
+        onLoad(){
+            console.log(this.data.swiperData);
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
