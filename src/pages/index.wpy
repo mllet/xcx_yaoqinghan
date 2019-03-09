@@ -100,7 +100,7 @@
 <template>
     <view class="container">
         <view wx:if="{{music_url}}">
-            <view class="background_music" bindtap="play">
+            <view class="background_music" @tap="play">
                 <image src="/images/icons/music_icon.png" class="musicImg {{music_icon}}"/>
                 <image src="/images/icons/music_play.png" class="music_play {{pauseImg}}"/>
             </view>
@@ -140,7 +140,7 @@
             swiper_demo: swiperDemo
         };
         data = {
-            music_url: 'http://isure.stream.qqmusic.qq.com/C400002u0fTY2HoJJp.m4a?guid=9773386763&vkey=052F5395E49C520A2C6669E732D1A11E9CC4E48C2665C45323BD94AB11A57690615ED1FD3AECDC3BCF045B3BE252B8D4C56CB3D0CA0813DA&uin=0&fromtag=66',
+            music_url: 'http://isure.stream.qqmusic.qq.com/C4000046NhnE3I6glK.m4a?guid=9773386763&vkey=5048BB1AAAC8DDEF4230A22179F156F4C207FA85FF11456D301D3D1D9839F86AB0F34F89488AC84E803083953FECD4937CD0092D202E5020&uin=0&fromtag=66',
             isPlayingMusic: true,
             swiperData: {
                 url: [

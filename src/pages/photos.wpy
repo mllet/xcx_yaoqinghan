@@ -3,14 +3,36 @@
 </style>
 <template>
     <view class="container">
+         <swiper_demo :swiperData.sync="data.swiperData"></swiper_demo>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
+    import swiperDemo from './../components/swiper';
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '甜蜜相册'
+        };
+        components = {
+            swiper_demo: swiperDemo
+        };
+        data={
+            swiperData: {
+                url: [
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9889dbacc59e72503f677ada8a63bd52f35bb84fdbd5e5f9ab7410c8f7e4963c47b8782c6745637c71077cc76427c9eb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1554.JPG&size=750',
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/3394d68f180f1ebf20295a4b16fee28a996a30f98e61a0618ca48e8d2a62b12a02237a5c40cceed131591f61bbb0cfad?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1553.JPG&size=750',
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fb735421063b1173f1883a238e007ca0fc7c9b38cdcace0ccd2a7296a482f2fc90010a29773504f887e8e18458f3c1cb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1552.JPG&size=750'
+                ],
+                indicatorDots: true,//是否显示面板指示点
+                vertical: false,//滑动方向是否为纵向
+                autoplay: true,//	是否自动切换 true需设置衔接滑动
+                circular: true,//衔接滑动
+                interval: 4000,//自动切换时间间隔https:
+                duration: 500,//滑动动画时长
+                previousMargin: 0,//前边距，可用于露出前一项的一小部分，接受 px 和rpx 值
+                nextMargin: 0
+            },
         }
         onLoad() {
 
