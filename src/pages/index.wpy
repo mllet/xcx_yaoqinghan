@@ -223,7 +223,7 @@
                 timingFunction: "linear",
                 duration: 2000,
             });
-            this.animation = animation
+            this.animation = animation;
             var next = true;
             //连续动画关键步骤
             setInterval(function () {
