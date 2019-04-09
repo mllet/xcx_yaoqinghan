@@ -15,9 +15,38 @@
             border-radius: 16rpx;
             box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
             display: flex;
+            flex-direction: row;
             justify-content: flex-start;
             align-items: flex-start;
             flex-wrap: wrap;
+            .items{
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                margin:40rpx 20rpx;
+                padding-left:16rpx;
+                .item{
+                    margin:0rpx 4rpx;
+                    .avator image{
+                        width: 110rpx;
+                        height: 110rpx;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        margin-top: 8rpx;
+                    }
+                    text{
+                        height: 30rpx;
+                        line-height: 30rpx;
+                        font-size: 24rpx;
+                        color: #666;
+                        width: 120rpx;
+                        margin: 0 auto;
+                        display: inline-block;
+                        white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+                        text-align: center;
+                    }
+                }
+            }
         }
     }
     .bottom {
@@ -53,12 +82,22 @@
     <view class="container">
         <view class="greet">
             <image class="head" src="/images/icons/heart-animation.gif"/>
-            <!--<scroll-view scroll-y="true" class="box">-->
-            <!--<view class="item" v-for="(item, index) in userList" :key="index">-->
-            <!--<image :src="item.user.avatarUrl"/>-->
-            <!--<text>{{item.user.nickName}}</text>-->
-            <!--</view>-->
-            <!--</scroll-view>-->
+            <scroll-view scroll-y="true" class="box" >
+                <view class="items">
+                    <view class="item" wx:for="{{userList}}" wx:for-index="idx" wx:for-item="itemName">
+                        <view class="avator">
+                            <image src="{{itemName.user.avatarUrl}}"/>
+                        </view>
+                        <text>{{itemName.user.nickName}}</text>
+                    </view>
+                    <view class="item" wx:for="{{userList}}" wx:for-index="idx" wx:for-item="itemName">
+                        <view class="avator">
+                            <image src="{{itemName.user.avatarUrl}}"/>
+                        </view>
+                        <text>{{itemName.user.nickName}}</text>
+                    </view>
+                </view>
+            </scroll-view>
         </view>
         <view class="bottom">
             <button class="left" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="sendGreet">送上祝福</button>
@@ -102,11 +141,9 @@
                 })
             }
         };
-
-        onLoad() {
+        onShow() {
             this.getUserList()
         };
-
         getOpendid() {
             let that = this;
             wx.cloud.callFunction({
@@ -122,7 +159,9 @@
                 name:'getUsers',
                 data: {}
             }).then(res => {
-                console.log(res)
+                this.userList=res.result.data;
+                this.$apply();
+                console.log(this.userList)
             });
         }
         addUser() {
@@ -134,8 +173,7 @@
                     user: that.userInfo
                 }
             }).then(res => {
-                // that.getUserList()
-                console.log(res)
+                that.getUserList()
             })
         };
 
