@@ -61,7 +61,7 @@
             <!--</scroll-view>-->
         </view>
         <view class="bottom">
-            <button class="left" lang="zh_CN" open-type="getUserInfo" @getuserinfo="sendGreet">送上祝福</button>
+            <button class="left" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo="sendGreet">送上祝福</button>
             <button class="right" open-type="share">分享喜悦</button>
         </view>
     </view>
@@ -69,56 +69,79 @@
 
 <script>
     import wepy from 'wepy'
-
+    import tools from './../common/h_tools'
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '好友祝福'
         };
         data = {
             userList: [],
+            openId: '',
+            userInfo:''
         };
-        methods = {
-            sendGreet(e) {
-                const that = this;
-                if (e.target.errMsg === 'getUserInfo:ok') {
-                    wx.getUserInfo({
-                        success: function (res) {
-                            that.userInfo = res.userInfo;
-                            that.getOpenId()
+        methods = {};
+
+        sendGreet(e) {
+            const that = this;
+            if (e.detail.userInfo) {
+                //用户按了允许授权按钮
+                that.userInfo = e.detail.userInfo;
+                that.getOpendid();
+            } else {
+                //用户按了拒绝按钮
+                wx.showModal({
+                    title: '警告',
+                    content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+                    showCancel: false,
+                    confirmText: '返回授权',
+                    success: function (res) {
+                        if (res.confirm) {
+                            console.log('用户点击了“返回授权”')
                         }
-                    })
-                }
-            },
+                    }
+                })
+            }
         };
 
         onLoad() {
             this.getUserList()
         };
 
-        getUserList() {
+        getOpendid() {
+            let that = this;
             wx.cloud.callFunction({
-                name: 'userList',
-                data: {}
-            }).then(res => {
-                // this.userList = res.result.data.reverse()
-                console.log(res)
-            })
-        };
-
-        getOpenId() {
-            const that = this;
-            wx.cloud.callFunction({
-                name: 'userList',
+                name: 'getOpendid',
                 data: {}
             }).then(res => {
                 that.openId = res.result.openid;
-                that.getIsExist()
+                that.getIsExist();
+            });
+        }
+        getUserList(){
+            wx.cloud.callFunction({
+                name:'getUsers',
+                data: {}
+            }).then(res => {
+                console.log(res)
+            });
+        }
+        addUser() {
+            const that = this;
+            const db = wx.cloud.database();
+            const user = db.collection('userList');
+            user.add({
+                data: {
+                    user: that.userInfo
+                }
+            }).then(res => {
+                // that.getUserList()
+                console.log(res)
             })
         };
 
         getIsExist() {
             const that = this;
-            const db = wx.cloud.database();
+            const db = wx.cloud.database({env: 'myxcx-6c495c'});
             const user = db.collection('userList');
             user.where({
                 _openid: that.openId
@@ -130,5 +153,6 @@
                 }
             })
         }
+
     }
 </script>

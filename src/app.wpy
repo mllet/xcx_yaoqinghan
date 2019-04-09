@@ -113,21 +113,21 @@
             wx.playBackgroundAudio();
             wx.cloud.init({
                 traceUser: true,
-                env: 'test-680327'
+                env: 'myxcx-6c495c'
             });
-            const testDB = wx.cloud.database({
-                env: 'test-680327'
-            });
-            testDB.collection('userList').add({
-                // data 字段表示需新增的 JSON 数据
-                data: {
-                    count: 2,
-                },
-                success(res) {
-                    // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-                    console.log(res)
-                }
-            })
+            // const testDB = wx.cloud.database({
+            //     env: 'test-680327'
+            // });
+            // testDB.collection('userList').add({
+            //     // data 字段表示需新增的 JSON 数据
+            //     data: {
+            //         count: 2,
+            //     },
+            //     success(res) {
+            //         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+            //         console.log(res)
+            //     }
+            // })
         }
         onLaunch() {
         }
