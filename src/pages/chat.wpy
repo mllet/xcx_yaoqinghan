@@ -1,20 +1,401 @@
 <style lang="less">
+    .message {
+        width: 100%;
+        height: 100%;
+        .box {
+            height: 100vh;
+            background: #F9E0D9;
+            width: 100%;
+            .place {
+                height: 20rpx;
+            }
+            .place-end {
+                height: 160rpx;
+            }
+            .item {
+                width: 630rpx;
+                margin-left: 30rpx;
+                border-radius: 16rpx;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 30rpx;
+                margin-bottom: 20rpx;
+                .left {
+                    width: 100rpx;
+                    height: 100rpx;
+                    border-radius: 50rpx;
+                }
+                .right {
+                    display: flex;
+                    flex-direction: colum;
+                    justify-content: flex-start;
+                    min-height: 100rpx;
+                    align-items: flex-start;
+                    width: 500rpx;
+                    margin-left: 20rpx;
+                    .top {
+                        height: 40rpx;
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .top-l {
+                            height: 50rpx;
+                            line-height: 50rpx;
+                            color: #444;
+                            font-size: 28rpx;
+                        }
+                        .top-r {
+                            height: 50rpx;
+                            line-height: 50rpx;
+                            color: #999;
+                            font-size: 24rpx;
+                        }
+                    }
+                    .con {
+                        line-height: 50rpx;
+                        color: #666;
+                        font-size: 28rpx;
+                        white-space: pre-wrap;
+                        width: 100%;
+                    }
+                }
 
+            }
+            .befirst {
+                width: 600rpx;
+                height: 450rpx;
+                margin: 0 auto;
+                min-height: 0;
+                overflow: hidden;
+                margin-top: 200rpx;
+            }
+            .befirst image {
+                width: 600rpx;
+                height: 450rpx;
+            }
+        }
+    }
+    .bottom {
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        padding: 20rpx 10rpx;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #fff;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 730rpx;
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        .msg_btn, .sign_btn {
+            width: 350rpx;
+            height: 100rpx;
+            font-size: 36rpx;
+            line-height: 100rpx;
+            border-radius: 10rpx;
+            color: #fff;
+            text-align: center;
+            background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
+            box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
+        }
+    }
+    .send_msg {
+        width: 700rpx;
+        padding: 26rpx;
+        background-color: #fff;
+        min-height: 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid #f1f1f1;
+
+    }
+    .send_ipt {
+        width: 680rpx;
+        padding: 15rpx;
+        font-size: 32rpx;
+        height: 200rpx;
+        line-height: 60rpx;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        margin-bottom: 20rpx;
+    }
+    .send_btn {
+        width: 500rpx;
+        height: 100rpx;
+        font-size: 36rpx;
+        line-height: 100rpx;
+        float: left;
+        background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
+        box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
+    }
+    .befirst {
+        width: 600rpx;
+        height: 450rpx;
+        margin: 0 auto;
+        min-height: 0;
+        overflow: hidden;
+        margin-top: 200rpx;
+    }
+    .befirst image {
+        width: 600rpx;
+        height: 450rpx;
+    }
+    .btn_area {
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        padding: 20rpx 10rpx;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #fff;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 730rpx;
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .msg_btn, .sign_btn {
+        width: 350rpx;
+        height: 100rpx;
+        font-size: 36rpx;
+        line-height: 100rpx;
+        border-radius: 10rpx;
+        color: #fff;
+        text-align: center;
+        background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
+        box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
+    }
+    .cancel_msg {
+        width: 180rpx;
+        height: 100rpx;
+        float: right;
+        line-height: 100rpx;
+        border-radius: 10rpx;
+        color: #fff;
+        text-align: center;
+        background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
+        box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
+    }
+    .msg_top {
+        display: block;
+        width: 500rpx;
+        height: 177rpx;
+        margin: 0 auto;
+        margin-top: -130rpx;
+        margin-bottom: 10rpx;
+    }
+    .sign_top {
+        display: block;
+        width: 700rpx;
+        height: 80rpx;
+        margin: 16rpx auto 26rpx;
+    }
+    .form-label {
+        min-height: 0;
+        overflow: hidden;
+        padding: 10rpx;
+        font-size: 32rpx;
+    }
+    .form-tit {
+        line-height: 60rpx;
+        font-size: 24rpx;
+    }
+    .form-tit .must {
+        color: red;
+    }
+    .form-ipt {
+        color: #333;
+    }
+    .form-ipt .ipt {
+        height: 60rpx;
+        padding: 10rpx 20rpx;
+        line-height: 60rpx;
+        background-color: #f8f8f8;
+        border-radius: 5rpx;
+        font-size: 28rpx;
+    }
+    .form-ipt .textarea {
+        height: 180rpx;
+        padding: 20rpx;
+        line-height: 60rpx;
+        background-color: #f8f8f8;
+        margin-bottom: 20rpx;
+        width: 100%;
+    }
+    .radio-group {
+        line-height: 80rpx;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .radio {
+        /* margin-right: 50rpx; */
+        display: block;
+        width: 50%;
+        float: left;
+    }
+    .form-btn {
+        text-align: center;
+    }
+    .wx-radio-input {
+        display: none;
+    }
+    .ws-checkbox {
+        display: block;
+        float: left;
+        margin-top: 28rpx;
+        margin-right: 10rpx;
+        width: 32rpx;
+        height: 32rpx;
+        background-image: url('https://wx.qiaker.cn/static/uploadfile/2018/1211/20181211223208_884.png');
+        background-size: 100%;
+    }
+    .ws-checkbox[checked] {
+        background-image: url('https://wx.qiaker.cn/static/uploadfile/2018/1211/20181211223147_449.png');
+    }
 </style>
 <template>
     <view class="container">
+        <view class="message">
+            <scroll-view scroll-y="true" @scroll="scroll" class="box">
+                <view class="place"></view>
+                <view wx:if="{{chatNum > 0}}">
+                    <!--<view class="item" v-for="(item, index) in messageList" :key="index">-->
+                    <!--<image class="left" :src="item.url"/>-->
+                    <!--<view class="right">-->
+                    <!--<view class="top">-->
+                    <!--<text class="top-l">{{item.name}}</text>-->
+                    <!--<text class="top-r">{{item.time}}</text>-->
+                    <!--</view>-->
+                    <!--<view class="con">{{item.desc}}</view>-->
+                    <!--</view>-->
+                    <!--</view>-->
+                </view>
+                <view wx:else>
+                    <view class="befirst">
+                        <image src="/images/icons/lovemail.gif"/>
+                    </view>
+                </view>
+                <view class="place-end"></view>
+            </scroll-view>
+            <div class="bottom">
+                <view class='msg_btn' @tap='leaveMsg'>说点啥吧</view>
+                <view class='sign_btn' @tap='signIn'>我要出席</view>
+            </div>
+        </view>
+
+        <view class="send_msg" wx:if="{{msgSta}}">
+            <image src='/images/green-flower.png' class='msg_top' mode="aspectFit"></image>
+            <form bindreset="foo">
+                <textarea placeholder="在这里输入您要说的话" class="send_ipt" bindinput="bindKeyInput" fixed="true">
+                </textarea>
+                <button type="primary" form-type="reset" class="send_btn" wx:if="{{auth}}">发送留言</button>
+                <button type="primary" form-type="reset" class="send_btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">发送留言</button>
+                <view class='cancel_msg' @tap='cancelMsg'>取消</view>
+            </form>
+        </view>
+
+        <view class="send_msg" wx:if="{{signSta}}">
+            <image src='/images/grren-flower-line.png' class='sign_top'></image>
+            <form bindsubmit="formSubmit">
+                <view class='form-label'>
+                    <view class='form-tit'>
+                        <text class="must">*</text>
+                        姓名
+                    </view>
+                    <view class="form-ipt">
+                        <input type="text" name="name" class='ipt' placeholder="怎么称呼您呢？"/>
+                    </view>
+                </view>
+                <view class='form-label'>
+                    <view class='form-tit'>
+                        <text class="must">*</text>
+                        电话
+                    </view>
+                    <view class="form-ipt">
+                        <input type="number" name="tel" class='ipt' placeholder="请填写有效的手机号码"/>
+                    </view>
+                </view>
+                <view class='form-label'>
+                    <view class='form-tit'>几人出席</view>
+                    <view class="form-ipt">
+                        <radio-group class="radio-group" name="plan">
+                            <label class="radio">
+                                <radio class='ws-checkbox' value="自己一人" checked="checked"/>
+                                自己一人
+                            </label>
+                            <label class="radio">
+                                <radio class='ws-checkbox' value="两人出席" checked=""/>
+                                两人出席
+                            </label>
+                            <label class="radio">
+                                <radio class='ws-checkbox' value="三人出席" checked=""/>
+                                三人出席
+                            </label>
+                            <label class="radio">
+                                <radio class='ws-checkbox' value="三人以上" checked=""/>
+                                三人以上
+                            </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class='form-label'>
+                    <view class='form-tit'>备注</view>
+                    <view class="form-ipt">
+                        <textarea class='textarea' name="extra" placeholder="请填写您的备注需求" fixed="true"/>
+                    </view>
+                </view>
+                <button type="primary" class="send_btn" form-type="submit" wx:if="{{auth}}">确定提交</button>
+                <button type="primary" class="send_btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">确定提交</button>
+                <view class='cancel_msg' bindtap='cancelMsg'>取消</view>
+            </form>
+        </view>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
+    import tools from './../common/h_tools'
+
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '留言评论'
-        }
+        };
+        data = {
+            userInfo: {},
+            inputValue: '',
+            auth: false,
+            msgSta: false,
+            signSta: false
+        };
 
         onLoad() {
 
+        };
+
+        methods = {
+            leaveMsg() {
+                this.msgSta = true;
+                this.signSta = false;
+                this.$apply();
+            },
+            signIn() {
+                this.signSta = true;
+                this.msgSta = false;
+                this.$apply();
+            },
+            cancelMsg() {
+                this.signSta = false;
+                this.msgSta = false;
+                this.$apply();
+            }
         }
+
     }
 </script>

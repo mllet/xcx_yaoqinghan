@@ -84,13 +84,7 @@
             <image class="head" src="/images/icons/heart-animation.gif"/>
             <scroll-view scroll-y="true" class="box" >
                 <view class="items">
-                    <view class="item" wx:for="{{userList}}" wx:for-index="idx" wx:for-item="itemName">
-                        <view class="avator">
-                            <image src="{{itemName.user.avatarUrl}}"/>
-                        </view>
-                        <text>{{itemName.user.nickName}}</text>
-                    </view>
-                    <view class="item" wx:for="{{userList}}" wx:for-index="idx" wx:for-item="itemName">
+                    <view class="item" wx:for="{{userList}}" wx:for-index="idx" wx:key="idx" wx:for-item="itemName">
                         <view class="avator">
                             <image src="{{itemName.user.avatarUrl}}"/>
                         </view>
@@ -161,7 +155,6 @@
             }).then(res => {
                 this.userList=res.result.data;
                 this.$apply();
-                console.log(this.userList)
             });
         }
         addUser() {
