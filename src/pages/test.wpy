@@ -1,254 +1,91 @@
 <style lang="less">
-    .background_music {
-        position: fixed;
-        top: 20rpx;
-        right: 0;
-        z-index: 10001;
-        width: 80rpx;
-    }
-    .musicImg {
-        width: 60rpx;
-        height: 60rpx;
-    }
-    .music_icon {
-        animation: musicRotate 3s linear infinite;
-    }
-    .music_play {
-        width: 28rpx;
-        height: 60rpx;
-        margin-left: -5px;
-        transform-origin: top;
-        -webkit-transform: rotate(20deg)
-    }
-    .playImg {
-        animation: musicStop 1s linear forwards;
-    }
-    .pauseImg {
-        animation: musicStart 1s linear forwards;
-    }
-    @-webkit-keyframes musicRotate {
-        from {
-            -webkit-transform: rotate(0deg);
+.tab-pane{
+    height: 100vh;
+    width: 100%;
+    .swipe-out{
+        position:relative;
+        overflow:hidden;
+        border-bottom:1rpx solid #e5e5e5;
+        .swipe-content{
+            position:relative;
+            z-index:5;
+            background-color:red;
+            height: 20vh;
         }
-        to {
-            -webkit-transform: rotate(360deg);
+        .swipe-actions{
+            height:100%;
+            background: #0b2e13;
+            position:absolute;
+            top:0;
+            right:0;
+            width:320rpx;
+            z-index:1;
+            color:#fff;
         }
     }
-    @-webkit-keyframes musicStop {
-        from {
-            -webkit-transform: rotate(20deg);
-        }
-        to {
-            -webkit-transform: rotate(0deg);
-        }
-    }
-    @-webkit-keyframes musicStart {
-        from {
-            -webkit-transform: rotate(0deg);
-        }
-        to {
-            -webkit-transform: rotate(20deg);
-        }
-    }
-    .container .content {
-        height: 100vh;
-        width: 100%;
-    }
-    .container .inv {
-        position: fixed;
-        height: 60rpx;
-        top: 20rpx;
-        right: 60rpx;
-        z-index: 99
-    }
-    .datetime {
-        position: fixed;
-        bottom: 50rpx;
-        width: 620rpx;
-        padding: 15rpx;
-        left: 50rpx;
-        background-color: rgba(255, 255, 255, .8)
-    }
-    .box {
-        padding: 30rpx 0;
-        position: relative;
-        border: 4rpx solid rgba(0, 0, 0, .8);
-    }
-    .we {
-        position: absolute;
-        bottom: 0;
-        left: 40rpx;
-        width: 520rpx;
-        height: 14rpx;
-    }
-    .date {
-        text-align: center;
-        font-size: 30rpx;
-        line-height: 50rpx;
-        margin-top: 20rpx;
-    }
-    .name {
-        width: 400rpx;
-        margin: 0 auto;
-        min-height: 0;
-        overflow: hidden;
-        font-size: 50rpx;
-        line-height: 50rpx;
-        text-align: center;
-    }
+}
 </style>
 <template>
     <view class="container">
-        <view wx:if="{{music_url}}">
-            <view class="background_music" @tap="play">
-                <image src="/images/icons/music_icon.png" class="musicImg {{music_icon}}"/>
-                <image src="/images/icons/music_play.png" class="music_play {{pauseImg}}"/>
-            </view>
-        </view>
-        <view class="content">
-            <swiper_demo :swiperData.sync="data.swiperData"></swiper_demo>
-        </view>
-        <view>
-            <image src='/images/icons/inv.png' class='inv'></image>
-            <view class='datetime' animation="{{animationData}}">
-                <view class='box'>
-                    <view class="name" @tap="moveTotest">Mr.钟 & Miss.候</view>
-                    <view class="date">
-                        <view>谨定于 {{mainInfo.date}}</view>
-                        <view>农历 {{mainInfo.lunar}} 举办婚礼</view>
-                        <view>席设：{{mainInfo.hotel}}</view>
-                        <view>地址：{{mainInfo.address}}</view>
-                        <view>恭请您的光临</view>
+        <view class="tab-pane">
+            <block wx:for="{{items}}" wx:key="id">
+                <view class="swipe-out">
+                    <view class="swipe-content" style="{{ item.style }}" data-index="{{item.id}}" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
+
                     </view>
-                    <image class="we" src='/images/icons/we.png'></image>
+                    <view class="swipe-actions"></view>
                 </view>
-            </view>
+            </block>
         </view>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
-    import swiperDemo from './../components/swiper';
-
-    let musicInstance;
     export default class Index extends wepy.page {
         config = {
-            navigationBarTitleText: '婚礼邀请函'
-        };
-        components = {
-            swiper_demo: swiperDemo
+            navigationBarTitleText: 'test'
         };
         data = {
-            music_url: 'http://isure.stream.qqmusic.qq.com/C4000046NhnE3I6glK.m4a?guid=9773386763&vkey=5048BB1AAAC8DDEF4230A22179F156F4C207FA85FF11456D301D3D1D9839F86AB0F34F89488AC84E803083953FECD4937CD0092D202E5020&uin=0&fromtag=66',
-            isPlayingMusic: true,
-            swiperData: {
-                url: [
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9889dbacc59e72503f677ada8a63bd52f35bb84fdbd5e5f9ab7410c8f7e4963c47b8782c6745637c71077cc76427c9eb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1554.JPG&size=750',
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/3394d68f180f1ebf20295a4b16fee28a996a30f98e61a0618ca48e8d2a62b12a02237a5c40cceed131591f61bbb0cfad?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1553.JPG&size=750',
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fb735421063b1173f1883a238e007ca0fc7c9b38cdcace0ccd2a7296a482f2fc90010a29773504f887e8e18458f3c1cb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1552.JPG&size=750'
-                ],
-                indicatorDots: false,//是否显示面板指示点
-                vertical: true,//滑动方向是否为纵向
-                autoplay: true,//	是否自动切换 true需设置衔接滑动
-                circular: true,//衔接滑动
-                interval: 4000,//自动切换时间间隔https:
-                duration: 500,//滑动动画时长
-                previousMargin: 0,//前边距，可用于露出前一项的一小部分，接受 px 和rpx 值
-                nextMargin: 0
-            },
-            mainInfo: {
-                date: "2019年2月2日 （星期六）",
-                lunar: "腊月二十八 举办婚礼",
-                hotel: "重庆永川天长大酒店",
-                address: "重庆永川渝西广场号"
-            },
-            animationData: ""//动画
+            startX:0,
+            item:"",
+            actionWidth:320,
+            current: 0,
+            items: [{id:0},{id:1},{id:2}]
         };
-        methods = {
-            play() {
-                if (this.data.isPlayingMusic) {
-                    musicInstance.pause();
-                    this.data.isPlayingMusic = false;
-                } else {
-                    musicInstance.play();
-                    this.data.isPlayingMusic = true;
+        methods={
+            touchstart(e){
+                this.closeOpened();
+                 if (e.touches.length === 1) {
+                     this.startX = e.touches[0].clientX
+                 }
+            },
+            touchmove(e){
+                if (e.touches.length === 1) {
+                    const moveX = e.touches[0].clientX;
+                    const disX = this.startX - moveX;
+                    const index = e.currentTarget.dataset.index;
+                    let left = -Math.max(0, Math.min(disX, this.actionWidth));
+                    this.items[index].style = `left: ${left}rpx;`;
+                    this.$apply();
                 }
             },
-            moveTotest(){
-                wx.reLaunch({
-                     url: '/pages/test',
-                })
+            touchend(e){
+                if (e.changedTouches.length === 1) {
+                    const endX = e.changedTouches[0].clientX;
+                    const disX = this.startX - endX;
+                    const index = e.currentTarget.dataset.index;
+                    this.current=index;
+                    let left = (disX > (this.actionWidth / 2)) ? -this.actionWidth : 0;
+                    this.items[index].style = `left: ${left}rpx;`;
+                    this.$apply();
+                }
             }
         };
-
-        computed = {
-            music_icon() {
-                if (this.data.isPlayingMusic) {
-                    return "music_icon";
-                } else {
-                    return "";
-                }
-            },
-            pauseImg() {
-                if (this.data.isPlayingMusic) {
-                    return "pauseImg";
-                } else {
-                    return "playImg";
-                }
-            },
-        };
-
-        playMusic() {
-            musicInstance = wx.getBackgroundAudioManager();
-            musicInstance.title = '背景音乐';
-            // 设置了 src 之后会自动播放
-            musicInstance.src = this.data.music_url;
-            //用于循环播放音乐
-            musicInstance.play();
-            musicInstance.onPlay(() => {
-                console.log("音乐播放开始");
-            });
-            musicInstance.onEnded(() => {
-                musicInstance.src = this.data.music_url;
-            })
-        }
-        ani_play(){
-            var animation = wx.createAnimation({
-                timingFunction: "linear",
-            });
-            animation.scale(0.9).step();
-            animation.scale(1).step();
-            this.animationData = animation.export();
-            this.$apply();
-        }
-        onShow() {
-            // this.ani_play();
-             var animation = wx.createAnimation({
-                timingFunction: "linear",
-                duration: 2000,
-            });
-            this.animation = animation;
-            var next = true;
-            //连续动画关键步骤
-            setInterval(function () {
-                if(next){
-                    animation.scale(0.9).step();
-                    next = !next;
-                }else{
-                    animation.scale(1).step();
-                    next = !next;
-                }
-                this.animationData = animation.export();
-                this.$apply();
-                // animation.scale(0.9).step();
-                // animation.scale(1).step();
-                // this.animationData = animation.export();
-                // this.$apply();
-            }.bind(this), 2000)
-        }
-        onLoad() {
-            this.playMusic();
+         // 关闭左滑打开
+        closeOpened() {
+            this.items[this.current].style = 'left: 0;';
+            this.$apply()
         }
     }
 </script>

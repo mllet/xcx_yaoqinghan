@@ -17,6 +17,7 @@
         config = {
             pages: [
                 'pages/index',
+                'pages/test',
                 "pages/photos",
                 "pages/map",
                 "pages/bless",
