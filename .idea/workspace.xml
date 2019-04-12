@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4589074-6630-449a-820a-dfc23ecfe5cb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/pages/chat.wpy" afterPath="$PROJECT_DIR$/src/pages/chat.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" afterPath="$PROJECT_DIR$/src/pages/index.wpy" />
-      <change beforePath="$PROJECT_DIR$/src/pages/photos.wpy" afterPath="$PROJECT_DIR$/src/pages/photos.wpy" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +29,8 @@
       <file leaf-file-name="index.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="148" column="260" lean-forward="true" selection-start-line="146" selection-start-column="19" selection-end-line="148" selection-end-column="260" />
+            <state relative-caret-position="43">
+              <caret line="144" column="25" lean-forward="true" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -52,28 +49,28 @@
       <file leaf-file-name="bless.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/bless.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="84" column="50" lean-forward="false" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
+            <state relative-caret-position="2551">
+              <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photos.wpy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="photos.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/photos.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="37" column="10" lean-forward="false" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+            <state relative-caret-position="506">
+              <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.wpy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chat.wpy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/chat.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-308">
-              <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="35" />
+            <state relative-caret-position="-1087">
+              <caret line="409" column="27" lean-forward="false" selection-start-line="409" selection-start-column="20" selection-end-line="409" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -90,8 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bottom</find>
-      <find>getOpenId</find>
       <find>getOpendid</find>
       <find>cancelMsg</find>
       <find>btn_area</find>
@@ -107,19 +102,21 @@
       <find>span</find>
       <find>text</find>
       <find>open</find>
-      <find>leaveMsg</find>
       <find>bindgetuserinfo</find>
       <find>messageList</find>
       <find>chatNum</find>
       <find>send_btn</find>
       <find>foo</find>
-      <find>getMessageList</find>
       <find>saveMessage</find>
       <find>auth</find>
       <find>formSubmitAttendee</find>
       <find>saveAttendeeList</find>
       <find>console</find>
       <find>userInfo</find>
+      <find>getMessageList</find>
+      <find>leaveMsg</find>
+      <find>getUserInfo</find>
+      <find>signIn</find>
     </findStrings>
     <replaceStrings>
       <replace>images/icons/</replace>
@@ -140,9 +137,9 @@
         <option value="$PROJECT_DIR$/src/app.wpy" />
         <option value="$PROJECT_DIR$/src/pages/bless.wpy" />
         <option value="$PROJECT_DIR$/src/pages/test.wpy" />
-        <option value="$PROJECT_DIR$/src/pages/chat.wpy" />
         <option value="$PROJECT_DIR$/src/pages/index.wpy" />
         <option value="$PROJECT_DIR$/src/pages/photos.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/chat.wpy" />
       </list>
     </option>
   </component>
@@ -238,7 +235,7 @@
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../gitProject/wedding" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fc_xcx" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/WWW/xcx/xcx_yaoqinghan/src/pages/map.wpy" />
   </component>
@@ -297,12 +294,12 @@
       <workItem from="1554779939939" duration="16033000" />
       <workItem from="1554859242073" duration="11969000" />
       <workItem from="1554969864640" duration="8506000" />
-      <workItem from="1555032487921" duration="15602000" />
+      <workItem from="1555032487921" duration="21280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144935000" />
+    <option name="totallyTimeSpent" value="150613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="450" y="0" width="1459" height="990" extended-state="0" />
@@ -687,10 +684,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/bless.wpy">
+    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="84" column="50" lean-forward="false" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
+        <state relative-caret-position="43">
+          <caret line="144" column="25" lean-forward="true" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -703,26 +700,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
+    <entry file="file://$PROJECT_DIR$/src/pages/bless.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="148" column="260" lean-forward="true" selection-start-line="146" selection-start-column="19" selection-end-line="148" selection-end-column="260" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/chat.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-308">
-          <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="35" />
+        <state relative-caret-position="2551">
+          <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/photos.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="37" column="10" lean-forward="false" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+        <state relative-caret-position="506">
+          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/chat.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1087">
+          <caret line="409" column="27" lean-forward="false" selection-start-line="409" selection-start-column="20" selection-end-line="409" selection-end-column="27" />
           <folding />
         </state>
       </provider>

@@ -383,14 +383,42 @@
 
         methods = {
             leaveMsg() {
-                this.msgSta = true;
-                this.signSta = false;
-                this.$apply();
+                var that=this;
+                that.msgSta = true;
+                that.signSta = false;
+                that.$apply();
+                wx.getSetting({
+                    success(res) {
+                        if (res.authSetting['scope.userInfo']) {
+                            wx.getUserInfo({
+                                success(res) {
+                                    that.userInfo = res.userInfo;
+                                    that.auth = true;
+                                    that.$apply();
+                                }
+                            })
+                        }
+                    }
+                })
             },
             signIn() {
-                this.signSta = true;
-                this.msgSta = false;
-                this.$apply();
+                var that=this;
+                that.signSta = true;
+                that.msgSta = false;
+                that.$apply();
+                wx.getSetting({
+                    success(res) {
+                        if (res.authSetting['scope.userInfo']) {
+                            wx.getUserInfo({
+                                success(res) {
+                                    that.userInfo = res.userInfo;
+                                    that.auth = true;
+                                    that.$apply();
+                                }
+                            })
+                        }
+                    }
+                })
             },
             cancelMsg() {
                 this.signSta = false;
@@ -431,10 +459,10 @@
                 }
             }).then(res => {
                 tools.showToast('提交成功~');
-                this.msgSta=false;
+                this.msgSta = false;
                 this.getMessageList();
                 this.$apply();
-            })
+            });
         };
         saveAttendeeList(e){
             let tel=e.tel;
