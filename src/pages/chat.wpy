@@ -263,19 +263,19 @@
 <template>
     <view class="container">
         <view class="message">
-            <scroll-view scroll-y="true" @scroll="scroll" class="box">
+            <scroll-view scroll-y="true" class="box">
                 <view class="place"></view>
                 <view wx:if="{{chatNum > 0}}">
-                    <!--<view class="item" v-for="(item, index) in messageList" :key="index">-->
-                    <!--<image class="left" :src="item.url"/>-->
-                    <!--<view class="right">-->
-                    <!--<view class="top">-->
-                    <!--<text class="top-l">{{item.name}}</text>-->
-                    <!--<text class="top-r">{{item.time}}</text>-->
-                    <!--</view>-->
-                    <!--<view class="con">{{item.desc}}</view>-->
-                    <!--</view>-->
-                    <!--</view>-->
+                    <view class="item" wx:for="{{messageList}}"  wx:key="idx" wx:for-item="itemName">
+                        <image class="left" src="{{itemName.user.avatarUrl}}"/>
+                        <view class="right">
+                            <view class="top">
+                                <text class="top-l">{{itemName.user.nickName}}</text>
+                                <!--<text class="top-r">{{item.time}}</text>-->
+                            </view>
+                            <view class="con">{{itemName.message}}</view>
+                        </view>
+                    </view>
                 </view>
                 <view wx:else>
                     <view class="befirst">
@@ -292,18 +292,18 @@
 
         <view class="send_msg" wx:if="{{msgSta}}">
             <image src='/images/green-flower.png' class='msg_top' mode="aspectFit"></image>
-            <form bindreset="foo">
-                <textarea placeholder="在这里输入您要说的话" class="send_ipt" bindinput="bindKeyInput" fixed="true">
+            <form bindsubmit="formSubmitMessage">
+                <textarea placeholder="在这里输入您要说的话" class="send_ipt" name="message" fixed="true">
                 </textarea>
-                <button type="primary" form-type="reset" class="send_btn" wx:if="{{auth}}">发送留言</button>
-                <button type="primary" form-type="reset" class="send_btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">发送留言</button>
+                <button type="primary" class="send_btn" form-type="submit" wx:if="{{auth}}">发送留言</button>
+                <button type="primary" form-type="submit" class="send_btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">发送留言</button>
                 <view class='cancel_msg' @tap='cancelMsg'>取消</view>
             </form>
         </view>
 
         <view class="send_msg" wx:if="{{signSta}}">
             <image src='/images/grren-flower-line.png' class='sign_top'></image>
-            <form bindsubmit="formSubmit">
+            <form bindsubmit="formSubmitAttendee">
                 <view class='form-label'>
                     <view class='form-tit'>
                         <text class="must">*</text>
@@ -352,7 +352,7 @@
                     </view>
                 </view>
                 <button type="primary" class="send_btn" form-type="submit" wx:if="{{auth}}">确定提交</button>
-                <button type="primary" class="send_btn" wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">确定提交</button>
+                <button type="primary" class="send_btn"  wx:else open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">确定提交</button>
                 <view class='cancel_msg' bindtap='cancelMsg'>取消</view>
             </form>
         </view>
@@ -368,15 +368,17 @@
             navigationBarTitleText: '留言评论'
         };
         data = {
-            userInfo: {},
+            auth:false,
+            userInfo: '',
             inputValue: '',
-            auth: false,
             msgSta: false,
-            signSta: false
+            signSta: false,
+            messageList:[],
+            chatNum:0
         };
 
         onLoad() {
-
+            this.getMessageList();
         };
 
         methods = {
@@ -395,6 +397,87 @@
                 this.msgSta = false;
                 this.$apply();
             }
+        };
+        bindgetuserinfo(e){
+            if(e.detail.userInfo){
+               this.userInfo = e.detail.userInfo;
+               this.auth=true;
+               this.$apply();
+            }else {
+                 wx.showModal({
+                    title: '警告',
+                    content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+                    showCancel: false,
+                    confirmText: '返回授权',
+                    success: function (res) {
+                        if (res.confirm) {
+                            console.log('用户点击了“返回授权”')
+                        }
+                    }
+                })
+            }
+        };
+        checkMessage(){
+
+        };
+        saveMessage(e){
+            let message=e.message;
+            const db = wx.cloud.database({env: 'myxcx-6c495c'});
+            const messageList = db.collection('messageList');
+            messageList.add({
+                data: {
+                    user: this.userInfo,
+                    message: message
+                }
+            }).then(res => {
+                tools.showToast('提交成功~');
+                this.msgSta=false;
+                this.getMessageList();
+                this.$apply();
+            })
+        };
+        saveAttendeeList(e){
+            let tel=e.tel;
+            let plan=e.plan;
+            let extra=e.extra;
+            let name=e.name;
+            const db = wx.cloud.database({env: 'myxcx-6c495c'});
+            const attendeeList = db.collection('attendeeList');
+            attendeeList.add({
+                data: {
+                    user: this.userInfo,
+                    message: this.message,
+                    name:name,
+                    tel:tel,
+                    plan:plan,
+                    extra:extra
+                }
+            }).then(res => {
+                tools.showToast('提交成功~');
+                this.signSta=false;
+                this.$apply()
+            })
+        };
+        getMessageList(){
+            wx.cloud.callFunction({
+                name:'getMessages',
+                data: {}
+            }).then(res => {
+                this.chatNum=res.result.data.length;
+                this.messageList=res.result.data;
+                this.$apply();
+            });
+        };
+        getMessage(e){
+            this.message = e.detail.value;
+        }
+
+        formSubmitAttendee(e) {
+            this.saveAttendeeList(e.detail.value);
+        }
+
+        formSubmitMessage(e) {
+            this.saveMessage(e.detail.value);
         }
 
     }

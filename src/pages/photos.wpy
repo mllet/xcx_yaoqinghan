@@ -20,9 +20,11 @@
         data={
             swiperData: {
                 url: [
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/9889dbacc59e72503f677ada8a63bd52f35bb84fdbd5e5f9ab7410c8f7e4963c47b8782c6745637c71077cc76427c9eb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1554.JPG&size=750',
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/3394d68f180f1ebf20295a4b16fee28a996a30f98e61a0618ca48e8d2a62b12a02237a5c40cceed131591f61bbb0cfad?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1553.JPG&size=750',
-                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/fb735421063b1173f1883a238e007ca0fc7c9b38cdcace0ccd2a7296a482f2fc90010a29773504f887e8e18458f3c1cb?pictype=scale&from=30013&version=3.3.3.3&uin=1240752460&fname=IMG_1552.JPG&size=750'
+
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/e5c772c36c49becac2c7fe3e168dbcf0c07c996dbe0f866a2777974e567aa44f7a98a662507e5d910eb63c906f4b2851?pictype=scale&from=30113&version=3.3.3.3&uin=1240752460&fname=IMG_1554.JPG&size=750',
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/e330a79d5a066e709540e336ed97f898e9089a2f3ad1ccdcf8b929104796bebd24c5450c7a3de7284b39652122733a4a?pictype=scale&from=30113&version=3.3.3.3&uin=1240752460&fname=IMG_1553.JPG&size=750',
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/e4270db6820afe5200f13fcf46ed335fd78aa4caf648f73430f98b8fcbded2362b6a3793b6cb0e23d45c5ea122d81f7c?pictype=scale&from=30113&version=3.3.3.3&uin=1240752460&fname=IMG_1551.JPG&size=750',
+                    'https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/913d8f016013151719aefc82ce67dd44739cfd958c2ce8add8fec773cb3c7db5d868c865064ed9c6059fff25c26a0672?pictype=scale&from=30113&version=3.3.3.3&uin=1240752460&fname=IMG_1552.JPG&size=750'
                 ],
                 indicatorDots: true,//是否显示面板指示点
                 vertical: false,//滑动方向是否为纵向
@@ -33,7 +35,7 @@
                 previousMargin: 0,//前边距，可用于露出前一项的一小部分，接受 px 和rpx 值
                 nextMargin: 0
             },
-        }
+        };
         onLoad() {
 
         }
